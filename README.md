@@ -1,5 +1,5 @@
 # xlseries-condatos2015
-Los excels con series de tiempo de este repositorio son utilizados como ejemplos para usar `xlseries` en este ipython notebook.
+Material para el taller de extracción de series de tiempo de archivos excel con `xlseries`.
 
 El taller presupone un conocimiento de python básico y/o las ganas de adquirirlo :)
 
