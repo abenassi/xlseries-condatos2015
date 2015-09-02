@@ -1,11 +1,9 @@
 # xlseries-condatos2015
 Material para el taller de extracción de series de tiempo de archivos excel con `xlseries`.
 
-El taller presupone un conocimiento de python básico y/o las ganas de adquirirlo :)
-
 ## Preparar el entorno de trabajo
 
-````
+```python
 # crear el entorno virtual
 virtualenv xlseries
 
@@ -31,16 +29,14 @@ pip install -r requirements.txt
 
 ## Outline del workshop
 
-1. Reproducir los ejemplos del notebook
+1. Reproducir los [ejemplos del notebook](01-ejemplos/Ejemplos.ipynb)
     * Aprender a usar [xlseries](https://github.com/abenassi/xlseries)
     * Comenzar a usar `DataFrame` de [pandas](http://pandas.pydata.org/index.html)
 2. Crear una base de datos actualizable de series de tiempo
     * Utilizar [dataset](https://dataset.readthedocs.org/en/latest/) como una forma rápida y fácil de crear una base de datos
-    * Escribir un crawler para scrapear archivos excel de un sitio web
+3. Escribir un crawler para scrapear todos los archivos excel de un sitio web
 
-
-
-# ¿Por qué este taller?
+## ¿Por qué este taller? (contexto del problema)
 
 Investigadores, estudiantes, consultores y activistas civiles que utilizan datos públicos pierden mucho tiempo en la búsqueda, la descarga, el análisis, la transformación, la comparación, la estructuración y, en última instancia, la actualización de los datos que necesitan utilizar en su trabajo. 
 
@@ -57,7 +53,7 @@ Como consecuencia, la calidad y alcance del trabajo con datos se resiente:
 
 Una herramienta como [xlseries](https://github.com/abenassi/xlseries) apunta a automatizar el proceso de limpieza y estructuración de series de tiempo publicadas en archivos excel organizados de las maneras más diversas e incluso con errores humanos.
 
-## Organismos internacionales
+### Organismos internacionales
 
 Existen varios organismos públicos (en general, organismos internacionales) que hacen un gran trabajo en este campo centralizando la publicación de series de tiempo de muchos países, pero muy a menudo estas fuentes no son lo suficientemente buenas para los investigadores que trabajan en problemáticas específicas de países en vías de desarrollo debido a varios problemas:
 
@@ -72,7 +68,7 @@ Algunas de las mejores instituciones que recopilan y organizan datos son:
 * Banco Mundial: Ofrece una API, una librería en python, una librería en stata, búsqueda web y toda la base de datos descargable.
 * OCDE: Ofrece una API y búsqueda web.
 
-## Problemas frecuentes que se encuentran en datos de países en vías de desarrollo (y en otros también)
+### Problemas frecuentes que se encuentran en datos de países en vías de desarrollo (y en otros también)
 
 * Normalmente, los datos están disponibles en formato excel. No hay APIs estructuradas para acceder a los datos programáticamente.
 * Los diseños de publicación en Excel pueden ser muy diferentes, incluso entre publicaciones de una misma fuente, y con frecuencia complicados de analizar programáticamente.
@@ -82,7 +78,7 @@ Algunas de las mejores instituciones que recopilan y organizan datos son:
 * La actualización de datos utilizados previamente requiere repetir la descarga y el proceso de datos, lo que implica casi duplicar el trabajo previo de limpieza realizado originalmente.
 * Las series de datos pueden tener varios errores de tipeo cuando el mecanismo de generación y publicación de los excels no es automático.
 
-## ¿Qué es xlseries?
+### ¿Qué es xlseries?
 
 El paquete [xlseries](https://github.com/abenassi/xlseries) realiza un análisis de los archivos excel a partir de algunos parámetros ingresados por el usuario para extraer series de tiempo y convertirlas al formato [pandas.DataFrame](http://pandas.pydata.org/pandas-docs/dev/generated/pandas.DataFrame.html). 
 
