@@ -2,3 +2,4 @@ xlseries
 dataset
 beautifulsoup4
 requests
+matplotlib
