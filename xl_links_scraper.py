@@ -31,21 +31,21 @@ class WebLinksScraper():
             visited_links (str): Path to a json file with visited links.
             target_links (str): Path to a json file with scraped links.
         """
-        self.links_to_visit = None
-        self.visited_links = None
-        self.target_links = None
+        self.links_to_visit = []
+        self.visited_links = []
+        self.target_links = []
 
         if links_to_visit:
-            with open(links_to_visit, "wb") as f:
-                self.links_to_visit = json.load(links_to_visit, f)
+            with open(links_to_visit, "rb") as f:
+                self.links_to_visit = json.load(f)
 
         if visited_links:
-            with open(visited_links, "wb") as f:
-                self.visited_links = json.load(visited_links, f)
+            with open(visited_links, "rb") as f:
+                self.visited_links = json.load(f)
 
         if target_links:
-            with open(target_links, "wb") as f:
-                self.target_links = json.load(target_links, f)
+            with open(target_links, "rb") as f:
+                self.target_links = json.load(f)
 
     # PUBLIC
     def scrape(self, base_url, targets, to_visit_targets=None):
@@ -141,7 +141,7 @@ class WebLinksScraper():
 
         wb.save(output_name)
 
-    def save_state(self, name="source_x", directory="2-base_de_datos"):
+    def save_state(self, name="source_x", directory="3-excel_links"):
         """Save current visited, scraped and to_visit links.
 
         Args:
@@ -190,7 +190,7 @@ class WebLinksScraper():
         base_url = utils.get_base_url(url)
 
         resp = requests.get(url)
-        bs = BeautifulSoup(resp.text)
+        bs = BeautifulSoup(resp.text, "html5lib")
 
         all_links = [(a.get_text(),
                       urlparse.urljoin(base_url, a.attrs.get('href')))

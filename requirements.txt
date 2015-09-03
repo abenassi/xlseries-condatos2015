@@ -3,3 +3,4 @@ dataset
 beautifulsoup4
 requests
 matplotlib
+html5lib
