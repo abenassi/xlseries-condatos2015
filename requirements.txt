@@ -1,6 +1,6 @@
-xlseries
-dataset
-beautifulsoup4
-requests
-matplotlib
+xlseries>=0.1.11
+dataset>=0.6.1
+beautifulsoup4>=4.4.0
+requests>=2.7.0
+matplotlib>=1.4.3
 html5lib
