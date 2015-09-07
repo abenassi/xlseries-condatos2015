@@ -4,7 +4,8 @@
 """
 build_database.py
 
-Build a time series database.
+Build a time series database from an excel file with excel download links and
+parameters to scrape series from them, with xlseries package.
 """
 
 from __future__ import unicode_literals
@@ -20,7 +21,24 @@ from xlseries import XlSeries
 
 def scrape_series(path_excel, headers_coord, data_starts, frequency,
                   time_header_coord, context=None, ws_name=None):
-    """Scrape time series from excel file into a DataFrame object."""
+    """Scrape time series from excel file into a DataFrame object.
+
+    Args:
+        path_excel (str): Path to the excel file with time series to scrape.
+        headers_coord (str): Headers coordinates separated by "," like
+            "A1-C1,E1,G1-I1"
+        data_starts (int): Row or column index where data starts.
+        frequency (str): Frequency of the series ("Y", "M", "D", "YQQQQ")
+        time_header_coord (str): Header or headers of the time index separated
+            by "," like "A1,B1"
+        context (str): Context string that could be None or something like
+            "Total 1:C4-F4;Total 2:D5-F5,H5-J5"
+        ws_name (str): Name of the worksheet to be scraped (if None, it will
+            use the active one).
+
+    Returns:
+        pandas.DataFrame or list of them: Scraped series stored as a DataFrame.
+    """
 
     # xlseries decode ws_name, and this come already decoded from openpyxl
     # so it has to be encoded to pass it to xlseries
@@ -42,7 +60,18 @@ def scrape_series(path_excel, headers_coord, data_starts, frequency,
 
 
 def add_series_to_tbl(table, source_name, categories, description, df_series):
-    """Iterate a dataframe adding each row of date to a database table."""
+    """Iterate a dataframe adding each row of date to a database table.
+
+    Args:
+        table (dataset.Table): A table from the dataset, corresponding to the
+            source being added.
+        source_name (str): Name of the source of data.
+        categories (str): Categories where series added should be tagged.
+        description (str): Description of the subject of the excel file or
+            worksheet where data was scraped.
+        df_series (pandas.DataFrame): DataFrame where series to be added to the
+            database are being passed.
+    """
 
     fields = df_series.columns
 
@@ -69,7 +98,7 @@ def update_table(table, source_file, source_dir, use_cache=False):
     """Update a time series database downloading and scraping excel files.
 
     Args:
-        table (dataset.Database table): A table in the database used.
+        table (dataset.Table): A table in the database used.
         source_file (str): Path to an xlsx file with the list of excel files to
             download and their parameters to extract data with xlseries.
         source_dir (str): Path to a cache directory where excel files will be
@@ -114,6 +143,16 @@ def update_table(table, source_file, source_dir, use_cache=False):
 def main(sources=None,
          database_url='sqlite:///2-base_de_datos/latam_series.db',
          use_cache=True):
+    """Main method that build the database.
+
+    Args:
+        sources (list): Names of the data sources being scraped. They should
+            match the excel file with the download links of the excels to be
+            scraped and the folder where they are.
+        database_url (str): URL where the database file will be.
+        use_cache (bool): If True, scraped excels will not be re-downloaded
+            the ones already there will be scraped.
+    """
     sources = sources or ["1-ejemplos"]
 
     # make a connection with the database

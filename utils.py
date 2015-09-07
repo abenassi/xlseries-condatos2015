@@ -50,6 +50,9 @@ def not_file_link(link):
 
     Args:
         link (str): Link that could be a file or not.
+
+    Returns:
+        bool: True if a link is not file.
     """
     possible_file_format = link.split(".")[-1]
     return (possible_file_format != "xls" and
@@ -90,9 +93,15 @@ def parse_pandas_date(date):
 def parse_context(context):
     """Parse a string context into a dictionary.
 
-    TODO: Show example.
-    """
+    Args:
+        context (str): A context string to be parsed like
+            "Total 1:C4-F4;Total 2:D5-F5,H5-J5"
 
+    Returns:
+        dict: A dict with parsed context like
+            {"Total 1": ["C4-F4],
+             "Total 2": ["D5-F5", "H5-J5"]}
+    """
     if not context or pd.isnull(context):
         return None
 
