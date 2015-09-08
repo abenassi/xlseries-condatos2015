@@ -27,14 +27,20 @@ source activate xlseries  # en Windows sólo `activate xlseries`
 pip install -r requirements.txt
 ```
 
-## Outline del workshop
+## Partes del repositorio
 
-1. Reproducir los [ejemplos del notebook](01-ejemplos/Ejemplos.ipynb)
+1. Ejemplos de uso de xlseries [1-explorar_ejemplos.ipynb](1-explorar_ejemplos.ipynb.ipynb)
     * Aprender a usar [xlseries](https://github.com/abenassi/xlseries)
     * Comenzar a usar `DataFrame` de [pandas](http://pandas.pydata.org/index.html)
-2. Crear una base de datos actualizable de series de tiempo
+2. Base de datos actualizable de series de tiempo [2-construir_base.ipynb](2-construir_base.ipynb.ipynb)
+    * Se usan los métodos del módulo [build_database.py](build_database.py)
+    * Ver una posible estructura sencilla para compilar una base de datos de series de tiempo
     * Utilizar [dataset](https://dataset.readthedocs.org/en/latest/) como una forma rápida y fácil de crear una base de datos
-3. Escribir un crawler para scrapear todos los archivos excel de un sitio web
+3. Crawler para scrapear todos los archivos excel de un sitio web [3-scrapear_links.ipynb](3-scrapear_links.ipynb)
+    * Se usan los métodos del módulo [xl_links_scraper.py](xl_links_scraper.py)
+    * Descargar y almacenar todos los arcivos excel de un sitio web
+
+*`utils.py` reúne algunos métodos auxiliares en un módulo aparte para focalizar la atención en lo más importante*
 
 ## ¿Por qué este taller? (contexto del problema)
 
