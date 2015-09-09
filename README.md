@@ -1,5 +1,5 @@
 # xlseries-condatos2015
-Material para el taller de extracción de series de tiempo de archivos excel con `xlseries`.
+Material para el taller de extracción de series de tiempo de archivos excel con `xlseries`. [Ver slides](http://www.slideshare.net/AgustinBenassi/xlseries-extrayendo-series-de-tiempo-de-archivos-excel)
 
 ## Preparar el entorno de trabajo
 
